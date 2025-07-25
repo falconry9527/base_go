@@ -24,21 +24,20 @@ func Run(db *gorm.DB) {
 	//// 新增
 	//add(db, &user)
 	// 删
-	softDeleteUser(db, 1)
-	permanentDeleteUser(db, 1)
-
-	// 查单个
-	u := getUserByID(db, 1)
-	fmt.Println("user= ", u)
+	//softDeleteUser(db, 1)
+	//permanentDeleteUser(db, 1)
+	//
+	//// 查单个
+	//u := getUserByID(db, 1)
+	//fmt.Println("user= ", u)
 	// 查一个列表
 	list := getUserList(db, 1)
-	fmt.Println("list= ", list)
-	for _, user := range list {
-		fmt.Println("user= ", user)
+	for i, user := range list {
+		fmt.Println("userSortID= ", i, "user=", user)
 	}
 	// 更新
-	newEmail := "new_john@example.com"
-	updateUser(db, 3, newEmail)
+	//newEmail := "new_john@example.com"
+	//updateUser(db, 3, newEmail)
 
 }
 
@@ -65,9 +64,15 @@ func getUserByID(db *gorm.DB, id uint) *models.User {
 	return &user
 }
 
-func getUserList(db *gorm.DB, id uint) []*models.User {
-	var list []*models.User
-	result := db.Where("id >=1 ").Find(&list)
+func getUserList(db *gorm.DB, id uint) []models.User {
+	var users []models.User
+	// db.Select("id,username,email")
+	// 分页
+	page, pageSize := 1, 10
+	db = db.Where("ID >= ? ", 3)
+	db = db.Where("username= ?", "john_doe2")
+	result := db.Offset((page - 1) * pageSize).Limit(pageSize).Order("id asc").Find(&users)
+
 	if result.Error != nil {
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 			fmt.Println("User not found")
@@ -75,7 +80,7 @@ func getUserList(db *gorm.DB, id uint) []*models.User {
 			log.Println("Failed to get user:", result.Error)
 		}
 	}
-	return list
+	return users
 }
 
 func softDeleteUser(db *gorm.DB, id uint) {
@@ -104,7 +109,6 @@ func updateUser(db *gorm.DB, id uint, newEmail string) {
 		log.Println("Failed to find user:", result.Error)
 		return
 	}
-
 	// 更新用户信息
 	result = db.Model(&user).Updates(models.User{
 		Email:  newEmail,
