@@ -1,8 +1,6 @@
 package svc
 
-import (
-	"base_go/04_zero/01_demo/internal/config"
-)
+import "base_go/04_zero/02_grpc/demo/internal/config"
 
 type ServiceContext struct {
 	Config config.Config

@@ -3,9 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"base_go/04_zero/01_demo/internal/logic"
-	"base_go/04_zero/01_demo/internal/svc"
-	"base_go/04_zero/01_demo/internal/types"
+	"base_go/04_zero/01_api/internal/logic"
+	"base_go/04_zero/01_api/internal/svc"
+	"base_go/04_zero/01_api/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
