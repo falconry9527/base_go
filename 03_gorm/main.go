@@ -39,7 +39,7 @@ func main() {
 		},
 	)
 
-	db, err := gorm.Open(mysql.Open("root:Conry@1238@tcp(127.0.0.1:3306)/gorm?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{
+	db, err := gorm.Open(mysql.Open("root:ZAqbXlUeg0nnmWRXzyLbhSc9AXuZh4m9@tcp(127.0.0.1:3306)/gorm?charset=utf8mb4&parseTime=True&loc=Local"), &gorm.Config{
 		Logger: newLogger,
 	})
 	if err != nil {

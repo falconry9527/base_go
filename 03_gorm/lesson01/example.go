@@ -6,30 +6,31 @@ import (
 	"fmt"
 	"gorm.io/gorm"
 	"log"
+	"time"
 )
 
 func Run(db *gorm.DB) {
 	// 创建表
-	// db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{})
+	//新增
+	birthday := time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC)
+	user := models.User{
+		Username: "john_doe",
+		Email:    "john@example.com",
+		Password: "securepassword",
+		Age:      30,
+		Birthday: &birthday,
+		Status:   true,
+	}
 	// 新增
-	//birthday := time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC)
-	//user := models.User{
-	//	Username: "john_doe",
-	//	Email:    "john@example.com",
-	//	Password: "securepassword",
-	//	Age:      30,
-	//	Birthday: &birthday,
-	//	Status:   true,
-	//}
-	//// 新增
-	//add(db, &user)
-	// 删
+	add(db, &user)
+	//删
 	//softDeleteUser(db, 1)
 	//permanentDeleteUser(db, 1)
-	//
-	//// 查单个
-	//u := getUserByID(db, 1)
-	//fmt.Println("user= ", u)
+
+	// 查单个
+	u := getUserByID(db, 1)
+	fmt.Println("user= ", u)
 	// 查一个列表
 	list := getUserList(db, 1)
 	for i, user := range list {
