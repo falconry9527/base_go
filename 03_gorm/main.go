@@ -21,7 +21,7 @@ type Child struct {
 }
 
 func InitDB(dst ...interface{}) *gorm.DB {
-	db, err := gorm.Open(mysql.Open("root:Conry@1238@tcp(127.0.0.1:3306)/gorm?charset=utf8mb4&parseTime=True&loc=Local"))
+	db, err := gorm.Open(mysql.Open("root:ZAqbXlUeg0nnmWRXzyLbhSc9AXuZh4m9@tcp(127.0.0.1:3306)/gorm?charset=utf8mb4&parseTime=True&loc=Local"))
 	if err != nil {
 		panic(err)
 	}
