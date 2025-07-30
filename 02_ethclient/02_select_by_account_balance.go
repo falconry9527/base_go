@@ -13,6 +13,7 @@ import (
 func main() {
 	// 查询账户余额
 	// 1. 连接到以太坊节点 (可以使用Infura或本地节点)
+	// 主网链
 	client, err := ethclient.Dial("https://mainnet.infura.io/v3/bdb2ede84fe04e41a6fc9b2c9506d8c7")
 	if err != nil {
 		fmt.Printf("未查询到余额信息")

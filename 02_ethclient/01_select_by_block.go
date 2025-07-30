@@ -11,7 +11,8 @@ import (
 )
 
 func main() {
-	client, err := ethclient.Dial("https://mainnet.infura.io/v3/bdb2ede84fe04e41a6fc9b2c9506d8c7")
+	// 测试链
+	client, err := ethclient.Dial("https://sepolia.infura.io/v3/bdb2ede84fe04e41a6fc9b2c9506d8c7")
 	if err != nil {
 		log.Fatal(err)
 	}
