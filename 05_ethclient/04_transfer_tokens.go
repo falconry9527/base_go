@@ -74,7 +74,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(gasLimit) // 23256
-	tx := types.NewTransaction(nonce, tokenAddress, value, gasLimit, gasPrice, data)
+	tx := types.NewTransaction(nonce, tokenAddress, value, gasLimit*2, gasPrice, data)
 
 	chainID, err := client.NetworkID(context.Background())
 	if err != nil {
