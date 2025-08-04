@@ -6,6 +6,7 @@ require (
 	github.com/ethereum/go-ethereum v1.16.1
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.2
 	github.com/zeromicro/go-zero v1.8.5
+	golang.org/x/crypto v0.40.0
 	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.36.6
 	gorm.io/driver/mysql v1.6.0
@@ -123,7 +124,6 @@ require (
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
-	golang.org/x/crypto v0.40.0 // indirect
 	golang.org/x/net v0.42.0 // indirect
 	golang.org/x/oauth2 v0.24.0 // indirect
 	golang.org/x/sync v0.16.0 // indirect
