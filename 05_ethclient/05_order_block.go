@@ -10,7 +10,7 @@ import (
 
 // 订阅区块
 func main() {
-	client, err := ethclient.Dial("https://sepolia.infura.io/v3/bdb2ede84fe04e41a6fc9b2c9506d8c7")
+	client, err := ethclient.Dial("wss://sepolia.infura.io/ws/v3/bdb2ede84fe04e41a6fc9b2c9506d8c7")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,17 +25,22 @@ func main() {
 		case err := <-sub.Err():
 			log.Fatal(err)
 		case header := <-headers:
-			fmt.Println(header.Hash().Hex()) // 0xbc10defa8dda384c96a17640d84de5578804945d347072e091b4e5f390ddea7f
-			block, err := client.BlockByHash(context.Background(), header.Hash())
-			if err != nil {
-				log.Fatal(err)
-			}
+			fmt.Println("-----header -------------")
+			fmt.Println(header.Number.Uint64())     // 5671744
+			fmt.Println(header.Time)                // 1527211625
+			fmt.Println(header.Difficulty.Uint64()) // 3217000136609065
+			fmt.Println(header.Hash())              // 0x9e8751ebb5069389b855bba72d94902cc385042661498a415979b7b6ee9ba4b9
 
-			fmt.Println(block.Hash().Hex())        // 0xbc10defa8dda384c96a17640d84de5578804945d347072e091b4e5f390ddea7f
-			fmt.Println(block.Number().Uint64())   // 3477413
-			fmt.Println(block.Time())              // 1529525947
-			fmt.Println(block.Nonce())             // 130524141876765836
-			fmt.Println(len(block.Transactions())) // 7
+			//block, err := client.BlockByHash(context.Background(), header.Hash())
+			//if err != nil {
+			//	log.Fatal(err)
+			//}
+			//fmt.Println("-----block-------------")
+			//fmt.Println(block.Number().Uint64())     // 5671744
+			//fmt.Println(block.Time())                // 1712798400
+			//fmt.Println(block.Difficulty().Uint64()) // 0
+			//fmt.Println(block.Hash().Hex())          // 0x9e8751ebb5069389b855bba72d94902cc385042661498a415979b7b6ee9ba4b9
+			//fmt.Println(len(block.Transactions()))   // 70
 		}
 	}
 }
