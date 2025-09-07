@@ -10,7 +10,6 @@ solcjs --abi store.sol
 solcjs --bin Store.sol
 
 2. 生成可调用内部方法的 go文件
-abigen --abi=store_sol_Store.abi --pkg=store --out=store.go
 abigen --bin=Store_sol_Store.bin --abi=Store_sol_Store.abi --pkg=store --out=store.go
 
 3. 部署合约 remix

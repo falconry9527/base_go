@@ -19,7 +19,7 @@ func main() {
 	defer client.Close()
 
 	// 3. 创建合约实例
-	instance, err := store.NewStore(common.HexToAddress("0x897D159F4b7AF148D3931C465dba822CB8DADc96"), client)
+	instance, err := store.NewStore(common.HexToAddress("0xE74f46C9D1E06f764f7e2057CA9AB11ad4768981"), client)
 	if err != nil {
 		log.Fatal(err)
 	}
